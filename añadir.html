@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir Juego</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Añadir Nuevo Juego</h1>
+    </header>
+    <main>
+        <form id="addGameForm">
+            <label for="gameName">Nombre del Juego:</label>
+            <input type="text" id="gameName" required>
+
+            <label for="gameImage">URL de la Imagen:</label>
+            <input type="text" id="gameImage" required>
+
+            <label for="gameDescription">Descripción:</label>
+            <textarea id="gameDescription" required></textarea>
+
+            <button type="submit">Añadir Juego</button>
+        </form>
+    </main>
+    <script>
+        document.getElementById('addGameForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const gameName = document.getElementById('gameName').value;
+            const gameImage = document.getElementById('gameImage').value;
+            const gameDescription = document.getElementById('gameDescription').value;
+
+            // Guardar el nuevo juego en localStorage
+            const newGame = {
+                name: gameName,
+                image: gameImage,
+                description: gameDescription
+            };
+            localStorage.setItem('newGame', JSON.stringify(newGame));
+
+            // Redirigir a la página principal
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
